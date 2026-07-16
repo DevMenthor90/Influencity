@@ -6,7 +6,13 @@ const dealsRoutes = require('../routes/deals');
 
 const app = express();
 
-app.use(express.json());
+app.use((req, res, next) => {
+  if (req._vercelParsedBody !== undefined) {
+    req.body = req._vercelParsedBody;
+    return next();
+  }
+  express.json()(req, res, next);
+});
 
 app.use((req, res, next) => {
   connectDB().then(() => next()).catch(next);
