@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: influencer-api
+    env: dotnet
+    buildCommand: cd backend/InfluencerAPI && dotnet publish -c Release -o out
+    startCommand: cd backend/InfluencerAPI/out && dotnet InfluencerAPI.dll
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: MongoDB__ConnectionString
+        sync: false  # Set this in Render dashboard
+      - key: Jwt__SecretKey
+        sync: false  # Set this in Render dashboard
+      - key: Cors__AllowedOrigins__0
+        value: https://your-app.vercel.app
