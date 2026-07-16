@@ -2,7 +2,18 @@
 backend/**/bin/
 backend/**/obj/
 backend/**/out/
+backend/**/publish-mac/
 *.user
+
+# Node backend build/local artifacts
+backend-node/node_modules/
+backend-node/.vercel/
+backend-node/.env
+backend-node/server.log
+
+# Local Mac distribution package
+InfluencerPlatform-Mac/
+InfluencerPlatform-Mac.zip
 
 # Node / Angular
 frontend/node_modules/

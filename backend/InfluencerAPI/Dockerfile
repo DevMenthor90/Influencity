@@ -6,6 +6,6 @@ RUN dotnet publish -c Release -o /app
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 COPY --from=build /app .
-ENV ASPNETCORE_URLS=http://0.0.0.0:10000
-EXPOSE 10000
+ENV ASPNETCORE_URLS=http://0.0.0.0:8080
+EXPOSE 8080
 ENTRYPOINT ["dotnet", "InfluencerAPI.dll"]
