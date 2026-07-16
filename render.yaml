@@ -1,9 +1,9 @@
 services:
   - type: web
     name: influencer-api
-    runtime: dotnet
-    buildCommand: cd backend/InfluencerAPI && dotnet publish -c Release -o out
-    startCommand: cd backend/InfluencerAPI/out && dotnet InfluencerAPI.dll
+    runtime: docker
+    dockerfilePath: ./backend/InfluencerAPI/Dockerfile
+    dockerContext: ./backend/InfluencerAPI
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
