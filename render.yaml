@@ -1,7 +1,7 @@
 services:
   - type: web
     name: influencer-api
-    env: dotnet
+    runtime: dotnet
     buildCommand: cd backend/InfluencerAPI && dotnet publish -c Release -o out
     startCommand: cd backend/InfluencerAPI/out && dotnet InfluencerAPI.dll
     envVars:
