@@ -9,7 +9,13 @@ async function connectDB() {
   if (!cached.promise) {
     const uri = process.env.MONGODB_CONNECTION_STRING;
     const dbName = process.env.MONGODB_DATABASE_NAME || 'influencer_db';
-    cached.promise = mongoose.connect(uri, { dbName }).then((m) => m);
+    cached.promise = mongoose
+      .connect(uri, { dbName, serverSelectionTimeoutMS: 8000 })
+      .then((m) => m)
+      .catch((err) => {
+        cached.promise = null;
+        throw err;
+      });
   }
 
   cached.conn = await cached.promise;
