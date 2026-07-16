@@ -2,6 +2,7 @@ services:
   - type: web
     name: influencer-api
     runtime: docker
+    plan: free
     dockerfilePath: ./backend/InfluencerAPI/Dockerfile
     dockerContext: ./backend/InfluencerAPI
     envVars:
